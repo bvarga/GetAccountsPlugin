@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.bvarga.getaccounts"
+    version="3.0.0">
+
+  <name>Android Get Accounts</name>
+  <description>Use this plugin to get the list of accounts of android device.</description>
+    
+  <author>Balazs Varga</author>
+  <keywords>get accounts</keywords>
+  <license>MIT License</license>
+
+  <engines>
+    <engine name="cordova" version=">=3.0.0" />
+  </engines>
+
+  <!-- android -->
+  <platform name="android">
+        <js-module src="www/getaccounts.js" name="GetAccountPlugin">
+            <clobbers target="getaccounts" />
+        </js-module>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    </config-file>
+
+    <!-- Cordova >= 3.0.0 -->
+    <config-file target="config.xml" parent="/*">
+      <feature name="GetAccountsPlugin">   
+        <param name="android-package" value="com.bvarga.getaccounts.GetAccountsPlugin"/>
+      </feature>
+    </config-file>
+        
+        
+    <!-- cordova plugin src files -->
+    <source-file src="src/android/com/bvarga/getaccounts/GetAccountsPlugin.java" target-dir="src/com/bvarga/getaccounts" />
+  </platform>
+</plugin>
